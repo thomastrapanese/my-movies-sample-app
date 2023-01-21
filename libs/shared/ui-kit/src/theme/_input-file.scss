@@ -1,0 +1,47 @@
+:root {
+  --ui-input-file-label-color: var(--ui-color);
+  --ui-input-file-border-radius: var(--ui-radius-sm);
+  --ui-input-file-padding: var(--ui-gutter-sm);
+}
+
+.ui-input-file {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    display: none !important;
+  }
+
+  .ui-input-file__image-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--ui-input-file-border-radius);
+    overflow: hidden;
+
+    img {
+      width: 300px;
+      height: 300px;
+
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .ui-input-file__buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    > * {
+      margin: var(--ui-input-file-padding);
+    }
+  }
+
+  label {
+    color: var(--ui-input-file-label-color);
+    padding: var(--ui-input-file-padding);
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+}

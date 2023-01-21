@@ -1,0 +1,61 @@
+<ui-dialog>
+  <ui-dialog-header [title]="'Add movie'"> </ui-dialog-header>
+  <ui-dialog-body>
+    <form [formGroup]="frm">
+      <div class="ui-flex-row">
+        <div class="ui-flex-1 ui-min-w-220">
+          <ui-input [label]="'title*'" formControlName="title"></ui-input>
+          <div
+            *ngIf="frm.controls?.title?.errors?.['required'] && (frm.controls?.title?.touched || frm.controls?.title?.dirty)"
+            class="ui-input-error"
+          >
+            Mandatory field
+          </div>
+        </div>
+        <ui-input
+          class="ui-flex-1 ui-min-w-220"
+          [label]="'director'"
+          formControlName="director"
+        ></ui-input>
+
+        <div class="ui-flex-1 ui-min-w-220">
+          <ui-input
+            [label]="'year'"
+            [inputType]="'number'"
+            formControlName="year"
+          ></ui-input>
+          <div
+            *ngIf="frm.controls?.year?.errors?.['min'] && (frm.controls?.year?.touched || frm.controls?.year?.dirty)"
+            class="ui-input-error"
+          >
+            First movie was from 1895!
+          </div>
+        </div>
+      </div>
+      <div class="ui-flex-row">
+        <div class="ui-flex-center ui-flex-1">
+          <ui-input-file
+            [label]="'poster'"
+            formControlName="poster"
+          ></ui-input-file>
+        </div>
+        <div class="ui-min-col-300">
+          <ui-input
+            [label]="'summary'"
+            formControlName="summary"
+            inputType="textarea"
+            class="ui-w-100p ui-h-100p"
+          ></ui-input>
+        </div>
+      </div>
+    </form>
+  </ui-dialog-body>
+  <ui-dialog-actions>
+    <ui-button
+      text="cancel"
+      (click)="cancelHandler()"
+      buttonType="critical"
+    ></ui-button>
+    <ui-button text="save" (click)="saveHandler()"></ui-button>
+  </ui-dialog-actions>
+</ui-dialog>

@@ -1,0 +1,69 @@
+:root {
+  --ui-button-border-primary: var(--ui-primary-1);
+  --ui-button-color-primary: var(--ui-primary-1);
+  --ui-button-background-color-primary-hover: var(--ui-primary-2);
+
+  --ui-button-color-critical: var(--ui-critical-1);
+  --ui-button-border-critical: var(--ui-critical-1);
+  --ui-button-background-color-critical-hover: var(--ui-critical-2);
+
+  --ui-button-padding: var(--ui-gutter-sm);
+  --ui-button-min-width: 100px;
+  --ui-button-bar-margin: var(--ui-gutter-sm);
+}
+
+.ui-button {
+  display: inline-block;
+
+  border: solid 1px transparent;
+  border-radius: var(--ui-button-border-radius);
+  cursor: pointer;
+  padding: var(--ui-button-padding);
+
+  &:hover {
+    border-color: var(--ui-button-border-color);
+  }
+
+  button {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    pointer-events: none;
+    min-width: var(--ui-button-min-width);
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--ui-button-color);
+  }
+}
+
+.ui-button-row {
+  padding: var(--ui-button-bar-margin);
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+
+  > * {
+    margin-right: var(--ui-button-bar-margin);
+  }
+
+  > *:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.ui-button.ui-button-color-primary {
+  --ui-button-color: var(--ui-button-color-primary);
+  --ui-button-border-color: var(--ui-button-border-primary);
+  --ui-button-background-color-hover: var(
+    --ui-button-background-color-primary-hover
+  );
+}
+
+.ui-button.ui-button-color-critical {
+  --ui-button-color: var(--ui-button-color-critical);
+  --ui-button-border-color: var(--ui-button-border-critical);
+  --ui-button-background-color-hover: var(
+    --ui-button-background-color-critical-hover
+  );
+}

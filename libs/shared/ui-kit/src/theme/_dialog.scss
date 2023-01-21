@@ -1,0 +1,64 @@
+:root {
+  --ui-dialog-border-color: var(--ui-divider-color);
+  --ui-dialog-border-radius: var(--ui-radius-lg);
+  --ui-dialog-background-color: var(--ui-background-color);
+  --ui-dialog-padding: var(--ui-gutter-lg);
+}
+
+.ui-dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--ui-dialog-background-color);
+  border: solid 1px var(--ui-dialog-border-color);
+  border-radius: var(--ui-dialog-border-radius);
+  height: 100%;
+  width: 100%;
+
+  .ui-dialog-header {
+    position: relative;
+    padding: var(--ui-dialog-padding);
+    font-size: 26px;
+    font-weight: bold;
+
+    &:after {
+      position: absolute;
+      content: ' ';
+      left: var(--ui-dialog-padding);
+      right: var(--ui-dialog-padding);
+      bottom: 0;
+      height: 1px;
+      background-color: var(--ui-dialog-border-color);
+    }
+  }
+
+  .ui-dialog-body {
+    padding: var(--ui-dialog-padding);
+    flex: 1;
+    overflow: auto;
+  }
+
+  .ui-dialog-actions {
+    padding: var(--ui-dialog-padding);
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+
+    > * {
+      margin-right: var(--ui-card-actions-margin);
+    }
+
+    > *:last-of-type {
+      margin-right: 0;
+    }
+
+    &:after {
+      position: absolute;
+      content: ' ';
+      left: var(--ui-dialog-padding);
+      right: var(--ui-dialog-padding);
+      top: 0;
+      height: 1px;
+      background-color: var(--ui-dialog-border-color);
+    }
+  }
+}

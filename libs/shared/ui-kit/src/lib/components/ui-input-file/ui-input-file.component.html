@@ -1,0 +1,18 @@
+<label *ngIf="label">{{ label }}</label>
+<input #input accept="image/*" type="file" />
+
+<div class="ui-input-file__image-wrapper">
+  <img [src]="files$ | async" default="/assets/image-404.png" />
+</div>
+<div class="ui-input-file__buttons-wrapper">
+  <ui-button
+    (click)="removeFileHandler()"
+    text="delete"
+    buttonType="critical"
+  ></ui-button>
+  <ui-button
+    (click)="input.click()"
+    text="choose"
+    buttonType="primary"
+  ></ui-button>
+</div>

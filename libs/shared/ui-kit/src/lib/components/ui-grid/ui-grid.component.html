@@ -1,0 +1,31 @@
+<table cdk-table [dataSource]="data || []" fixedLayout>
+  <ng-container *ngFor="let c of columns">
+    <ng-container [cdkColumnDef]="c.key || ''">
+      <th cdk-header-cell *cdkHeaderCellDef>{{ c.title }}</th>
+      <td cdk-cell *cdkCellDef="let element">
+        <ng-container *ngIf="c.gridCellTemplate?.templateRef">
+          <ng-template
+            *ngTemplateOutlet="
+              c.gridCellTemplate?.templateRef!;
+              context: { $implicit: element }
+            "
+          ></ng-template>
+        </ng-container>
+        <ng-container *ngIf="!c.gridCellTemplate?.templateRef">
+          {{element?.[c.key || '']}}
+        </ng-container>
+      </td>
+    </ng-container>
+  </ng-container>
+
+  <tr cdk-header-row *cdkHeaderRowDef="columnsKeys$ | async"></tr>
+  <tr cdk-row *cdkRowDef="let row; columns: columnsKeys$ | async"></tr>
+</table>
+
+<div class="ui-grid__card-group" *ngIf="cardTemplate?.templateRef">
+  <ng-container *ngFor="let m of data || []">
+    <ng-template
+      *ngTemplateOutlet="cardTemplate?.templateRef!; context: { $implicit: m }"
+    ></ng-template>
+  </ng-container>
+</div>

@@ -1,0 +1,8 @@
+<button
+  role="button"
+  (click)="clickHandler($event)"
+  [attr.aria-label]="text"
+  [attr.disabled]="disabled ? 'true' : undefined"
+>
+  {{ text }}
+</button>

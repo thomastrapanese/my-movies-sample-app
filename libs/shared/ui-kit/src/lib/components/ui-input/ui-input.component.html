@@ -1,0 +1,11 @@
+<label *ngIf="label">{{ label }}</label>
+
+<input
+  *ngIf="inputType !== 'textarea'"
+  [type]="inputType || 'text'"
+  #input
+  [min]="min"
+/>
+<textarea *ngIf="inputType === 'textarea'" #input></textarea>
+
+<span *ngIf="placeholder" class="ui-input-placeholder">{{ placeholder }}</span>

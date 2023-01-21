@@ -1,0 +1,48 @@
+:root {
+  --ui-input-label-color: var(--ui-color);
+  --ui-input-border-color: var(--ui-divider-color);
+  --ui-input-border-radius: var(--ui-radius-sm);
+  --ui-input-background-color: var(--ui-background-color);
+  --ui-input-padding: var(--ui-gutter-md);
+  --ui-input-error-message-color: var(--ui-critical-1);
+  --ui-input-error-border-color: var(--ui-critical-1);
+  --ui-input-error-background-color: var(--ui-critical-3);
+}
+
+.ui-input {
+  display: flex;
+  flex-direction: column;
+
+  input,
+  textarea {
+    background-color: var(--ui-input-background-color);
+    border: solid 1px var(--ui-input-border-color);
+    border-radius: var(--ui-input-border-radius);
+    padding: var(--ui-input-padding);
+  }
+
+  textarea {
+    min-height: 100px;
+    height: 100%;
+    resize: vertical;
+  }
+
+  label {
+    color: var(--ui-input-label-color);
+    padding: var(--ui-input-padding);
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  &.ng-invalid.ng-touched {
+    input,
+    textarea {
+      border-color: var(--ui-input-error-border-color);
+      background-color: var(--ui-input-error-background-color);
+    }
+  }
+}
+
+.ui-input-error {
+  color: var(--ui-input-error-message-color);
+  margin: 0 var(--ui-input-padding);
+}

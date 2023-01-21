@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import '@angular/cdk/overlay-prebuilt.css';
+@import 'libs/shared/ui-kit/src/theme';
+
+body {
+  background-color: var(--ui-background-color);
+  color: var(--ui-color);
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+//Fix for dialog scrollbars on mobile
+.cdk-dialog-container {
+  height: auto !important;
+}

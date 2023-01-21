@@ -1,0 +1,71 @@
+<div class="ui-button-row">
+  <ui-button
+    class="ui-hide-sm"
+    text="show grid"
+    (click)="displayMode = 'grid'"
+    *ngIf="displayMode !== 'grid'"
+  ></ui-button>
+  <ui-button
+    class="ui-hide-sm"
+    text="show card"
+    (click)="displayMode = 'card'"
+    *ngIf="displayMode !== 'card'"
+  ></ui-button>
+  <div class="ui-spacer"></div>
+  <ui-button text="create" (click)="createHandler()"></ui-button>
+</div>
+
+<ui-grid [data]="(moviesList$ | async) || []" [defaultMode]="displayMode">
+  <ui-grid-col key="poster" title="poster">
+    <ng-template let-data uiGridCell>
+      <img
+        [src]="data.poster"
+        default="/assets/image-404.png"
+        class="ui-img-cell"
+      />
+    </ng-template>
+  </ui-grid-col>
+  <ui-grid-col key="title" title="title"></ui-grid-col>
+  <ui-grid-col key="director" title="director"></ui-grid-col>
+  <ui-grid-col key="year" title="year"></ui-grid-col>
+  <ui-grid-col key="actions" title="actions" [fitContent]="true">
+    <ng-template let-data uiGridCell>
+      <ui-button
+        text="delete"
+        (click)="removeHandler(data)"
+        buttonType="critical"
+      ></ui-button>
+      <ui-button text="edit" (click)="editHandler(data)"></ui-button>
+    </ng-template>
+  </ui-grid-col>
+  <ng-template let-data uiGridCard>
+    <ui-card>
+      <ui-card-header [image]="data.poster"></ui-card-header>
+      <ui-card-body>
+        <ui-data-list>
+          <ui-data-list-item
+            [label]="'title'"
+            [value]="data.title"
+          ></ui-data-list-item>
+          <ui-data-list-item
+            [label]="'director'"
+            [value]="data.director"
+          ></ui-data-list-item>
+          <ui-data-list-item
+            [label]="'year'"
+            [value]="data.year"
+          ></ui-data-list-item>
+          <!--          <ui-data-list-text [label]="'summary'" [text]="data.summary"></ui-data-list-text>-->
+        </ui-data-list>
+      </ui-card-body>
+      <ui-card-actions>
+        <ui-button
+          text="delete"
+          (click)="removeHandler(data)"
+          buttonType="critical"
+        ></ui-button>
+        <ui-button text="edit" (click)="editHandler(data)"></ui-button>
+      </ui-card-actions>
+    </ui-card>
+  </ng-template>
+</ui-grid>
